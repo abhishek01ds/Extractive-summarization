@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyTorch and HuggingFace caches
+.cache/
+checkpoints/
+models/*.pt
+models/*.pth
+!models/.gitkeep
+
+# Output and logs
+outputs/*
+!outputs/.gitkeep
+logs/
+*.log
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# VS Code and IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+Thumbs.db

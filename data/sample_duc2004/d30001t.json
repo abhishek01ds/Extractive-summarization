@@ -1,0 +1,12 @@
+{
+  "cluster_id": "d30001t",
+  "topic": "Cambodian Political Crisis and Elections",
+  "documents": {
+    "FBIS_1": "Cambodian political leaders gathered in Phnom Penh for a special summit. King Norodom Sihanouk urged rival parties to form a coalition government to stabilize the nation. Prime Minister Hun Sen stated his party is open to negotiations.",
+    "FBIS_2": "The opposition party leader Prince Norodom Ranariddh agreed to participate in talks. International observers reported the election was generally peaceful despite minor voting irregularities in rural provinces.",
+    "APW_1": "Talks on forming Cambodia's new government made preliminary progress on Monday. Both coalition partners pledged to respect the democratic constitution and restore economic stability."
+  },
+  "reference_summaries": [
+    "Cambodian political rivals met in Phnom Penh under King Norodom Sihanouk to negotiate a coalition government following recent national elections. Leaders Hun Sen and Prince Ranariddh agreed to constitutional talks to restore political stability."
+  ]
+}

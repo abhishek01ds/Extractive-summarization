@@ -1,0 +1,54 @@
+# ==============================================================================
+# SGCSumm Configuration File
+# Faithfully implements hyperparameters from:
+# "SGCSumm: An extractive multi-document summarization method based on
+# pre-trained language model, submodularity, and graph convolutional neural networks"
+# (Expert Systems with Applications 215, 2023)
+# ==============================================================================
+
+general:
+  seed: 42
+  device: "cpu"            # "cpu" or "cuda" (auto-detected if "auto")
+  log_level: "INFO"
+  output_dir: "./outputs"
+
+embedding:
+  model_name: "bert-base-uncased"
+  embedding_dim: 768       # m = 768 for BERT-base
+  layers_to_average: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]  # Eq. (3): average layers 2 to 12
+  use_cache: true
+  cache_dir: "./data/cache"
+  use_mock: false          # If true, uses fast deterministic mock embeddings for offline CPU smoke-testing
+
+graph:
+  top_n_vertices: 15       # n = 15 (Paper Table 4)
+  top_k_neighbors: 20      # k = 20 (Paper Table 4)
+  similarity_threshold: 0.0 # Threshold for building adjacency if desired
+
+gcn:
+  # Conv-pooling layers described in Section 3.1 & Theorem 3/4
+  conv1_kernel: 1          # 1D filter across neighbors
+  conv2_kernel: 15         # 1D filter across selected vertices (equal to n)
+  activation: "relu"       # Concave non-decreasing activation
+  pooling: "mean"          # Lemma 1: Mean pooling preserves submodularity
+
+dsn:
+  # Deep Submodular Network (Section 3.2 & Table 4)
+  hidden_dim: 16           # Number of neurons in single hidden layer (Table 4)
+  hidden_activation: "relu" # Concave non-decreasing activation
+  output_activation: "sigmoid" # Sigmoid maps score to [0, 1]
+
+training:
+  learning_rate: 0.0001    # 10^-4 (Paper Table 4 & Figure 5)
+  epochs: 1000             # 1000 epochs (Paper Table 4 & Figure 6)
+  optimizer: "lbfgsb"      # "lbfgsb" (Paper Sec 3.4) or "adam_projected"
+  max_iter: 1000           # For SciPy L-BFGS-B
+  augmentation_samples: 5  # Number of augmented samples per base cluster
+  val_split: 0.10          # 90% train, 10% test (Paper Sec 3.4)
+  checkpoint_dir: "./models"
+  checkpoint_filename: "sgcsumm_best.pt"
+
+summarization:
+  budget_type: "byte"      # "byte" (Paper Table 6: 665 bytes) or "word"
+  budget_limit: 665        # 665 bytes for DUC 2004
+  restore_order: true      # Preserve original document & sentence appearance order

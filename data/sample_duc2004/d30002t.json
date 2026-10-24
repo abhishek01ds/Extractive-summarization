@@ -1,0 +1,12 @@
+{
+  "cluster_id": "d30002t",
+  "topic": "Hurricane Mitch Central America Disaster",
+  "documents": {
+    "FBIS_3": "Hurricane Mitch battered Central America with torrential rains and destructive mudslides. Relief workers struggled to reach isolated mountain communities cut off by collapsed bridges.",
+    "FBIS_4": "In Honduras and Nicaragua, emergency officials declared a state of catastrophe. The United Nations appealed for global humanitarian aid to provide clean water and medical supplies.",
+    "APW_2": "International cargo planes delivered food rations and temporary shelters. Governments around the world pledged millions in emergency disaster relief funds."
+  },
+  "reference_summaries": [
+    "Hurricane Mitch triggered catastrophic flooding and mudslides across Honduras and Nicaragua. The disaster prompted international emergency rescue operations and United Nations aid appeals."
+  ]
+}
